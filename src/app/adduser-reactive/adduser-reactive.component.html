@@ -1,0 +1,25 @@
+<form  [formGroup]="myForm">
+    <div formGroupName="groupe1">
+  FirstName: <input type="text" formControlName="first">
+  <br>
+  <div *ngIf="myForm.get('groupe1').get('first').touched && myForm.get('groupe1').get('first').invalid">
+    <div *ngIf="firstName.errors['required']">obligatoire</div>
+    <div *ngIf="firstName.errors['minlength']">Minimum x</div>
+    <div *ngIf="firstName.errors['pattern']">que des lettres</div>
+</div>
+  lasname: <input type="text" formControlName="last">
+  <br>
+  birthday: <input type="date"  formControlName="birthday">
+  <br>
+  password: <input type="password"  formControlName="password">
+  <br>
+  email: <input type="text"  formControlName="monemail">
+  <br>
+  category: <input type="text" formControlName="category">
+  <br>
+  proffision: <input type="text"  formControlName="profesion">
+  <br>
+  </div>
+  <button  [disabled]="myForm.invalid">Save</button>
+
+</form>

@@ -1,0 +1,57 @@
+<p>add-user works!</p>
+<input required type="text" [(ngModel)]="first"   value="test" #x="ngModel">
+touched /untouched :{{x.touched}} / {{x.untouched}}
+<br>
+dirty /pristine : {{x.dirty}} / {{x.pristine}}
+<br>
+valid/invalid :{{x.valid}} / {{x.invalid}}
+
+<div class="ng-invalid"   *ngIf="x.touched && x.invalid">
+    champ obligatoire
+</div>
+<form #f="ngForm">
+    <div  ngModelGroup="group1" #group1="ngModelGroup">
+    FirstName:
+    <!--> lezim nhoto il name ki yibda fama fromulaire <!-->
+    <input (keyup)="test(firstname.errors)"  name="firstName" type="text"  [(ngModel)]="user.firstName" #firstname="ngModel" required minlength="3" pattern="[a-zA-Z]*" >
+     <div *ngIf="firstname.invalid">
+        <div *ngIf="firstname.errors['required']"> 
+            champ oblicatoitre
+        </div>
+        <div *ngIf="firstname.errors['minlength']">
+            min {{firstname.errors['minlength']['requiredLenghth']}} carateres
+            alors que aveez ecrit {{firstname.errors['minlength']['actualLenghth']}}
+        </div>
+        <div *ngIf="firstname.errors['pattern']">
+            ne contient que de lettre
+        </div>
+     </div>
+    
+    <br>
+
+    lastname:
+    <input name="lastname" type="text" [(ngModel)]="user.lastName" #lastname="ngModel" required minlength="3" pattern="[a-zA-Z]*" ><br>
+    Birthdate:
+     <input name="birthdate" type="text"><br>
+    Email:
+    <input name="email" type="email" [(ngModel)]="user.email" #email="ngModel" pattern="^[a-zA-Z0-9._-]+@gmail.com"><br>
+    <div *ngIf="email.valid">
+         il faut avoir un compt gmail
+    </div>
+    password:
+    <input name="password" type="password" [(ngModel)]="user.password" #pwd="ngModel" pattern="^[a-zA-Z0-9]{8,}?"><br>
+    </div>
+    <div *ngIf="group1.valid">
+    profession:
+    <input name="profession" type="text" [(ngModel)]="user.profession">
+    Category: 
+    <input name="category" type="text" [(ngModel)]="user.accountCategory" #cat="ngModel" pattern="Customer"> <br>
+      <br>
+     <div *ngIf="cat.invalid">
+    il faut que ça soit customer
+    </div>
+   </div>
+
+    <button  (click)="addUser()" [disabled]="f.invalid"> Save </button>
+
+</form>
