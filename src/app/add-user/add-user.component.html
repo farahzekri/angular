@@ -1,4 +1,6 @@
 <p>add-user works!</p>
+<h1>Template driven form</h1>
+<!-->
 <input required type="text" [(ngModel)]="first"   value="test" #x="ngModel">
 touched /untouched :{{x.touched}} / {{x.untouched}}
 <br>
@@ -8,7 +10,7 @@ valid/invalid :{{x.valid}} / {{x.invalid}}
 
 <div class="ng-invalid"   *ngIf="x.touched && x.invalid">
     champ obligatoire
-</div>
+</div><!-->
 <form #f="ngForm">
     <div  ngModelGroup="group1" #group1="ngModelGroup">
     FirstName:
@@ -45,7 +47,7 @@ valid/invalid :{{x.valid}} / {{x.invalid}}
     profession:
     <input name="profession" type="text" [(ngModel)]="user.profession">
     Category: 
-    <input name="category" type="text" [(ngModel)]="user.accountCategory" #cat="ngModel" pattern="Customer"> <br>
+    <input name="category" type="text" [(ngModel)]="user.accountCategory" #cat="ngModel" required> <br>
       <br>
      <div *ngIf="cat.invalid">
     il faut que ça soit customer

@@ -1,7 +1,7 @@
-<form  [formGroup]="myForm">
+<h1>Ractive Forms</h1>
+<form  [formGroup]="myForm" (submit)="addUser()">
     <div formGroupName="groupe1">
-  FirstName: <input type="text" formControlName="first">
-  <br>
+  FirstName: <input type="text" formControlName="first"><br>
   <div *ngIf="myForm.get('groupe1').get('first').touched && myForm.get('groupe1').get('first').invalid">
     <div *ngIf="firstName.errors['required']">obligatoire</div>
     <div *ngIf="firstName.errors['minlength']">Minimum x</div>
@@ -14,12 +14,13 @@
   password: <input type="password"  formControlName="password">
   <br>
   email: <input type="text"  formControlName="monemail">
-  <br>
+ </div>
+ <div *ngIf="myForm.get('groupe1').valid">
   category: <input type="text" formControlName="category">
   <br>
   proffision: <input type="text"  formControlName="profesion">
   <br>
-  </div>
+ </div>
   <button  [disabled]="myForm.invalid">Save</button>
 
 </form>

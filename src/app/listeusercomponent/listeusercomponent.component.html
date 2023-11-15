@@ -2,7 +2,7 @@ category:<input type="text" [(ngModel)]="category">
 <ul>
     <div *ngFor="let u of liste; let j=index">
     <li *ngIf="u.accountCategory==category">
-       
+        <a [routerLink]="['updateuser2', u.id]">update</a>
          **{{j}}** {{u.id}} - {{u.firstName}} - <img [src]="u.picture">
          <button [disabled]="u.accountCategory ==='Admin'" (click)="delete(j)">Delete</button>
          <button *ngIf="u.accountCategory !='Admin'" (click)="delete(j)">Delete</button>
@@ -17,5 +17,4 @@ category:<input type="text" [(ngModel)]="category">
    
 </ul>
 
-<button (click)="addUser()">add</button>
-<app-add-user></app-add-user>
+

@@ -18,6 +18,12 @@ export class UserService {
   addUserFromDB(user:User):Observable<User>{
     return this._http.post<User>("http://localhost:3000/user",user);
   }
+  UpdateUser(user:User):Observable<User>{
+    return this._http.put<User>("http://localhost:3000/user/"+user.id,user);
+  }
+  getUser(id:number):Observable<User>{
+    return this._http.get<User>("http://localhost:3000/users/"+id);
+    }
   getall() : User[]{
     return[
       {
