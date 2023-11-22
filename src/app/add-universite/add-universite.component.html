@@ -1,0 +1,24 @@
+
+
+<body>
+<form #f="ngForm">
+    <div class="form-group">
+      <label for="exampleInputPassword1">nom de l'universite</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="nomUniversite" [(ngModel)]="universite.nomUniversite" #nomuniver="ngModel"  placeholder="nom"  pattern="[a-zA-Z]*" required>
+      <div *ngIf="nomuniver.invalid && nomuniver.touched">
+        <div *ngIf="nomuniver.errors['pattern']">
+            affiche que de l'ettre 
+      </div>
+      <div *ngIf="nomuniver.errors['required']">
+        le champ est obligatoir 
+    </div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">adresse de l'universite</label>
+        <input type="text" class="form-control" id="exampleInputPassword1"name="addresse" [(ngModel)]="universite.addresse" #addressuniver="ngModel" placeholder="adresse">
+    </div>
+    <button  class="btn btn-primary" (click)=" addUniversite()" [disabled]="f.invalid">Submit</button>
+</form>
+
+</body>
